@@ -1,0 +1,41 @@
+# vscode
+.vscode
+
+# hardhat
+artifacts
+cache
+deployments
+node_modules
+coverage
+coverage.json
+typechain
+
+####################################
+# Don't push the environment vars! 
+.env
+####################################
+
+# Generated files
+bin/
+gen/
+out/
+build/
+
+# Log Files
+*.log
+
+# Version control
+vcs.xml
+
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
+gas-report.txt
+
+contracts/test/fuzzing/crytic-export
+
+.temp
