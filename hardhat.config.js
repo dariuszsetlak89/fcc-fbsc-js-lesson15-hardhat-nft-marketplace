@@ -26,13 +26,12 @@ const REPORT_GAS = process.env.REPORT_GAS || false;
 // const FORKING_BLOCK_NUMBER = 10000000; // modify
 
 module.exports = {
-    solidity: {
-        compilers: [{ version: "0.8.9" }, { version: "0.6.6" }, { version: "0.4.24" }],
-    },
+    solidity: "0.8.9",
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
             chainId: 31337,
+            blockConfirmations: 1,
             // forking: {
             //     url: ETHEREUM_RPC_URL,
             //     blockNumber: FORKING_BLOCK_NUMBER,
@@ -53,6 +52,7 @@ module.exports = {
             //     mnemonic: MNEMONIC,
             // },
             saveDeployments: true,
+            blockConfirmations: 6,
         },
         goerli: {
             chainId: 5,
@@ -67,6 +67,7 @@ module.exports = {
             accounts: PRIVATE_KEY !== undefined ? [`0x${PRIVATE_KEY}`] : [],
             saveDeployments: true,
             chainId: 137,
+            blockConfirmations: 6,
         },
     },
     etherscan: {
@@ -91,7 +92,7 @@ module.exports = {
     },
     namedAccounts: {
         deployer: {
-            default: 0, // deployer
+            default: 0,
         },
         user: {
             default: 1,
