@@ -1,23 +1,20 @@
 const networkConfig = {
     default: {
         name: "hardhat",
-        mintFee: "10000000000000000", // 0.01 ETH
+        mintFee: "100000000000000000", // 0.01 ETH
         keyHash: "0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc", // gasLane
         fundAmount: "1000000000000000000", // 1 ETH
-        keepersUpdateInterval: "30", // seconds
     },
     31337: {
         name: "localhost",
-        mintFee: "10000000000000000", // 0.01 ETH
+        mintFee: "100000000000000000", // 0.01 ETH
         keyHash: "0xd89b2bf150e3b9e13446986e571fb9cab24b13cea0a43ea20a6049a85cc807cc", // gasLane
         fundAmount: "1000000000000000000", // 1 ETH
-        keepersUpdateInterval: "30", // seconds
     },
     1: {
         name: "mainnet",
         linkToken: "0x514910771af9ca656af840dff83e8264ecf986ca",
         fundAmount: "0",
-        keepersUpdateInterval: "30", // seconds
     },
     5: {
         name: "goerli",
@@ -29,7 +26,6 @@ const networkConfig = {
         mintFee: "10000000000000000", // 0.01 ETH
         fundAmount: "100000000000000000", // 0.1
         subscriptionId: "VRF_SUBSCRIPTION_ID",
-        keepersUpdateInterval: "30", // seconds
     },
     137: {
         name: "polygon",

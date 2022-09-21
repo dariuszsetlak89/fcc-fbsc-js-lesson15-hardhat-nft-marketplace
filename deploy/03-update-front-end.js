@@ -27,13 +27,18 @@ async function updateContractAddresses() {
 }
 
 async function updateAbi() {
+    // Contract NftMarketplace
     const nftMarketplace = await ethers.getContract("NftMarketplace");
     fs.writeFileSync(
         `${frontEndAbiLocation}NftMarketplace.json`,
         nftMarketplace.interface.format(ethers.utils.FormatTypes.json)
     );
 
-    const basicNft = await ethers.getContract("BasicNft");
+    // Contract BasicNftDogPug, BasicNftDogShibaInu or BasicNftDogStBernard
+    // ABI is the same for each BasicNft contract
+    const basicNft = await ethers.getContract("BasicNftDogPug");
+    // const basicNft = await ethers.getContract("BasicNftDogShibaInu");
+    // const basicNft = await ethers.getContract("BasicNftDogStBernard");
     fs.writeFileSync(
         `${frontEndAbiLocation}BasicNft.json`,
         basicNft.interface.format(ethers.utils.FormatTypes.json)

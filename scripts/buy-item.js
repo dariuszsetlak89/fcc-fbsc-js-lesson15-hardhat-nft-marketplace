@@ -2,11 +2,16 @@ const { ethers, network } = require("hardhat");
 const { moveBlocks } = require("../utils/move-blocks");
 const { developmentChains } = require("../helper-hardhat-config");
 
-const TOKEN_ID = 29;
+const TOKEN_ID = 2;
+
+// Choose dogContractName (uncomment):
+// const dogContractName = "BasicNftDogPug";
+// const dogContractName = "BasicNftDogShibaInu";
+const dogContractName = "BasicNftDogStBernard";
 
 async function buyItem() {
     const nftMarketplace = await ethers.getContract("NftMarketplace");
-    const basicNft = await ethers.getContract("BasicNft");
+    const basicNft = await ethers.getContract(dogContractName);
     const listing = await nftMarketplace.getListing(basicNft.address, TOKEN_ID);
     const price = listing.price.toString();
     const tx = await nftMarketplace.buyItem(basicNft.address, TOKEN_ID, { value: price });

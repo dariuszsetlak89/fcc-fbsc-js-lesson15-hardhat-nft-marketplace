@@ -5,14 +5,27 @@ const { moveBlocks } = require("../utils/move-blocks");
 const PRICE = ethers.utils.parseEther("0.1");
 
 async function mint() {
-    const randomNumber = Math.floor(Math.random() * 2);
+    const randomNumber = Math.floor(Math.random() * 3);
+    // console.log(randomNumber);
     let basicNft, randomChosenNFT;
-    if (randomNumber == 1) {
-        basicNft = await ethers.getContract("BasicNftTwo");
-        randomChosenNFT = "BasicNftTwo";
-    } else {
-        basicNft = await ethers.getContract("BasicNftTwo");
-        randomChosenNFT = "BasicNftTwo";
+    switch (randomNumber) {
+        case 0: {
+            basicNft = await ethers.getContract("BasicNftDogPug");
+            randomChosenNFT = "Dog Pug";
+            break;
+        }
+        case 1: {
+            basicNft = await ethers.getContract("BasicNftDogShibaInu");
+            randomChosenNFT = "Dog Shiba Inu";
+            break;
+        }
+        case 2: {
+            basicNft = await ethers.getContract("BasicNftDogStBernard");
+            randomChosenNFT = "Dog St. Bernard";
+            break;
+        }
+        default:
+            console.log("Error! No matching contract.");
     }
 
     // Minting
@@ -21,19 +34,14 @@ async function mint() {
     const mintTxReceipt = await mintTx.wait(1);
     const tokenId = mintTxReceipt.events[0].args.tokenId;
     console.log(`NFT minted!`);
-    console.log(`Random chosen NFT contract: ${randomChosenNFT}`);
-    console.log(`TokenID: ${tokenId}`);
-    console.log(`NFT address: ${basicNft.address}`);
     console.log(
-        `Minted tokenId ${mintTxReceipt.events[0].args.tokenId.toString()} from contract: ${
-            basicNft.address
-        }`
+        `Minted NFT: ${randomChosenNFT}, TokenID: ${tokenId}, NFT address: ${basicNft.address}`
     );
 
     // Mining blocks on local network
     if (developmentChains.includes(network.name)) {
         // Moralis has a hard time if you move more than 1 at once!
-        await moveBlocks(1, (sleepAmount = 1000));
+        await moveBlocks(2, (sleepAmount = 1000));
     }
 }
 
