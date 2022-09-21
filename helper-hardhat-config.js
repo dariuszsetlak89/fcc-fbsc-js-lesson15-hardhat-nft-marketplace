@@ -41,8 +41,13 @@ const networkConfig = {
 };
 
 const developmentChains = ["hardhat", "localhost"];
+const frontEndContractsFile =
+    "../fcc-fbsc-js-lesson15-nextjs-moralis-nft-marketplace/constants/networkMapping.json";
+const frontEndAbiLocation = "../fcc-fbsc-js-lesson15-nextjs-moralis-nft-marketplace/constants/";
 
 module.exports = {
     networkConfig,
     developmentChains,
+    frontEndContractsFile,
+    frontEndAbiLocation,
 };
